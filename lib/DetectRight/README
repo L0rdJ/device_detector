@@ -1,0 +1,141 @@
+READ ME FILE 
+
+Welcome to DetectRight, next-generation Device Detection: all performance, no hype!
+OK, maybe a little hype.
+
+(Java JRE 1.6 and .NET 4.0 versions can also be downloaded from http://www.detectright.com/downloads.html)
+
+Prerequisites
+=============
+
+PHP 5.2+ w/SQLite or PDO w/SQLite, and optionally APCCache, Memcache, MySQL, Zend Cache, or Redis (redis support is beta)
+JSON optional, not required.
+
+
+Installing:
+===========
+1) Copy the files into a suitable directory (for instance, above your public web directory).
+2) Get a free data file from DetectRight.com (registration required) and put it somewhere visible
+3) If the conf directory doesn't exist, create a conf directory, copy the config files there.
+4) Customise the config files and point them to the Detectright directory and data file
+
+
+	Suggested setup:
+	
+	/home/youraccount
+				/detectright
+					All DetectRight files
+				/detectright/conf
+					detectright.conf.php (mostly cache options here: APC is default)
+				/detectright/admin
+					admin interface for DetectRight that allows editing of SQLite file (beta)
+				/public_html
+					your website
+					
+	DetectRight would be accessed in your scripts thus:
+		include_once("/home/youraccount/detectright/detectright.php");
+		DetectRight::initialize("/fn/to/database");
+		
+		// DO CLEVER LIFE-ENHANCING STUFF HERE
+		$profile = DetectRight::getProfileFromHeaders($_SERVER); 
+		// or
+		$profile = DetectRight::getProfileFromUserAgent($_SERVER)
+		Detectright::close();
+
+Further resources
+=================
+
+More documentation and resources: http://www.detectright.com/downloads.html 
+
+Data files for DetectRight: http://www.detectright.com/cpanel.html
+
+/**
+ * @author Chris Abbott <chris@detectright.com>
+ * @package DetectRight
+ */
+/******************************************************************************
+Version: 2.8.0 (build: 29/07/2014)
+Config:  default
+Author:  Chris Abbott, chris@detectright.com
+Support: http://www.detectright.com
+
+© 2014 DetectRight Limited, All Rights Reserved
+
+THIS IS NOT OPEN SOURCE SOFTWARE.
+
+This library's default licencing is under the DetectRight Evaluation License 
+Agreement, the latest version of which can be found at 
+
+http://www.detectright.com/legal-and-privacy.html
+
+Use of this library will be deemed to be an acceptance of those terms and conditions,
+and must be adhered to unless you have signed a difference license with us (for instance, 
+for development, non-profit, social community, OEM, Enterprise or Commercial).
+
+Further details can be found at www.DetectRight.com
+
+The summary here is intended to highlight some parts of the agreement, but is only 
+an illustration and does not itself form part of the agreement itself.
+
+The agreement does not contain any redistribution rights for the software (whether modified or unmodified), 
+but it does allow modification of the source code by the end-user, with the understanding that
+modified builds of the software are not supported by DetectRight without a premium support license.
+
+For license fees for commercial use, please contact sales@detectright.com
+
+The database file accessed by this API should be downloaded solely from 
+http://www.detectright.com through the user control panel (free registration). 
+
+Your fair use and other rights are in no way affected by the above.
+******************************************************************************/
+
+Changes in 2.0.8
+
+Various efficiency changes and bug fixes
+
+Changes in 2.1.0
+
+Some efficiency changes. Added capbility to read new flatter DetectRight databases,
+which greatly speeds up tree processes in DR and removes a lot of the need for intermediate cacheing.
+
+Changes from 2.1.1
+
+Bug fixes
+Changes from 2.1.2
+
+Changes to isMobile and uaImportance in the Entity object
+Changes to binary handling in the QuantumDataTree getDirectValueArray object
+Miscellaneous bug fixes and standardisation of basic comparison functions to improve agreement with Java build
+Memory usage in PHP 5.2 improved to overcome terrible PHP garbage collection
+
+Changes from 2.2.0
+
+Extra validation surrounding SQLite file, fixes to function definitions of cache objects.
+
+Changes in 2.3.0
+
+New DRResult and DRProfile objects (in beta)
+Various little bug fixes
+New disableOverrides option, also force Tablets to Portrait.
+
+Changes in 2.3.1.1
+Fixed bug caused by refuseNominativeEntities function rename
+Changes to DRProfile and DRProfileResult objects
+Added ability to load database into memory to speed up batch jobs
+Lots of small fixes resulting from consistency testing with Java
+and C#
+
+Changes in 2.7.1
+Express Mode
+Much quicker performance on both cached and non-cached
+dpAsOS
+Many minor fixes and improvements
+Made HipHop compatible
+Verified to work with IIS
+More cache options added
+Build synchronized with .NET and Java versions
+
+Changes in 2.8.0
+Minor fixes, refactoring of DetectRight object
+Re-engineering of Sig detection, entity descriptor cache, rolling cache object 
+Lookup generation ability
