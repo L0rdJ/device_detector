@@ -25,7 +25,9 @@ $ chmod 0777 -R extension/device_detector/resources/WURFL/storage/cache
 ```
 $ sudo apt-get install php5-sqlite
 ```
-5. Obtain DeviceAtlas licence key at https://deviceatlas.com/ and set it as `[DeviceAtlas] LicenceKey` setting in device_detector.ini
+5. Extract extension/device_detector/resources/DetectRight/detectright_data.zip to the same folder (it is required only for DetectRight)
+
+6. Obtain DeviceAtlas licence key at https://deviceatlas.com/ and set it as `[DeviceAtlas] LicenceKey` setting in device_detector.ini (it is required only for DeviceAtlas)
 
 Example usage
 -------------
